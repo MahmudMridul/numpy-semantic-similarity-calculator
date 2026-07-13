@@ -1,0 +1,8 @@
+{
+  "log_dir": "logs",
+  "log_file": "app.log",
+  "level": "DEBUG",
+  "max_bytes": 1048576,
+  "backup_count": 3,
+  "format": "%(asctime)s | %(levelname)s | %(name)s | %(module)s:%(lineno)d | %(message)s"
+}

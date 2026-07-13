@@ -1,21 +1,13 @@
-
-
-def read_sentences(file_path: str) -> list[str]:
-    try: 
-        with open(file_path, 'r', encoding='utf-8') as file:
-            lines = file.readlines()
-        return lines
-    except FileNotFoundError as e:
-        print(e)
-        return []
-    except OSError as e:
-        print(e)
-        return []
-    
+from app_logger import AppLogger
+from file_reader import FileReader
 
 def main():
+    log = AppLogger(__name__).get()
+    log.info('Application started.')
+
     FILE = 'sentences.txt'
-    sentences = read_sentences(file_path=FILE)
+    reader = FileReader(FILE)
+    sentences = reader.read_sentences()
     print(sentences)    
 
 
