@@ -1,6 +1,7 @@
 from app_logger import AppLogger
 from file_reader import FileReader
-from constants import SENTENCE_FILE, LOG_CONFIG
+from sentence_processor import SentenceProcessor
+from constants import SENTENCE_FILE
 
 def main():
     log = AppLogger(__name__).get()
@@ -8,7 +9,13 @@ def main():
 
     reader = FileReader(SENTENCE_FILE)
     sentences = reader.read_sentences()
-    print(sentences)    
+
+    if len(sentences) == 0:
+        log.error('No sentences found')
+        return
+    
+    processed_sentences = SentenceProcessor(sentences).get_processed_sentences()
+    print(processed_sentences)
 
 
 if __name__ == "__main__":
