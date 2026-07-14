@@ -2,18 +2,20 @@ import json
 import logging
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
+from constants import LOG_CONFIG
+
 
 class AppLogger:
     _configured = False
 
-    def __init__(self, name: str, config_path: str = 'log_config.json') -> None:
+    def __init__(self, name: str, config_path: Path = LOG_CONFIG) -> None:
         self.logger = logging.getLogger(name)
 
         if not AppLogger._configured:
             self._configure(config_path)
             AppLogger._configured = True
 
-    def _configure(self, config_path: str) -> None:
+    def _configure(self, config_path: Path) -> None:
         config = self._load_config(config_path)
 
         log_dir = Path(config.get('log_dir', 'logs'))
@@ -35,13 +37,12 @@ class AppLogger:
         root_logger.addHandler(handler)
 
 
-    def _load_config(self, config_path: str) -> dict:
-        path = Path(config_path)
-
-        if not path.exists():
+    def _load_config(self, config_path: Path) -> dict:
+        if not config_path.exists():
+            raise FileNotFoundError
             return {}
         
-        with path.open('r') as file:
+        with config_path.open('r') as file:
             return json.load(file)
         
     def get(self) -> logging.Logger:
