@@ -9,8 +9,11 @@ wheels/
 # Virtual environments
 .venv
 
+# Logs
+logs/
+
 # Specification 
 PROJECT_SPECIFICATION.md
 
-# Logs
-logs/
+# TODO
+TODO.md
