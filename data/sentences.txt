@@ -1,2 +1,6 @@
-A quick brown fox jumps over the lazy dog.
-A slow white fox jumps over the active dog. 
+The sun rises in the east.
+The sun sets in the west.
+The sun rises early today. 
+The moon glows at night.
+Children play in the park.
+Stock prices fell sharply yesterday.  
