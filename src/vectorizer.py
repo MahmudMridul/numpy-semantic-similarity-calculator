@@ -5,9 +5,16 @@ log = AppLogger(__name__).get()
 
 class Vectorizer:
     def __init__(self, vocabulary: list[str], tokenized_sentence: list[list[str]]) -> None:
+        self.vocabulary = []
+        self.tokenized_sentences = []
+        self.vectorized_sentences = []
+
+        if not tokenized_sentence or len(tokenized_sentence) == 0:
+            log.error(f'No tokens found')
+            return
+        
         self.vocabulary = vocabulary
         self.tokenized_sentences = tokenized_sentence
-        self.vectorized_sentences = []
         self._create_vectors()
 
     def get_vectors(self) -> list[np.ndarray]:

@@ -41,8 +41,8 @@ class SentenceProcessor:
     
     def _remove_punctuation(self):
         punc_removed = []
+        translator = str.maketrans('', '', string.punctuation)
         for sen in self.sentences:
-            translator = str.maketrans('', '', string.punctuation)
             punc_removed.append(sen.translate(translator))
         self.sentences = punc_removed
     
