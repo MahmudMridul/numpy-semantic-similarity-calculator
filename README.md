@@ -1,6 +1,6 @@
 # Numpy Semantic Similarity Calculator
 
-A CLI tool that reads sentences from a text file, converts them into bag-of-words vectors using NumPy only, and computes cosine similarity between them — no ML libraries involved, just NumPy arrays, dot products, and norms.
+A CLI tool that reads sentences from a text file, converts them into bag-of-words vectors using NumPy only, computes cosine similarity between them, and converts those scores into a softmax probability distribution — no ML libraries involved, just NumPy arrays, dot products, norms, and exponentials.
 
 ## Project Structure
 
@@ -47,4 +47,4 @@ This project uses [uv](https://docs.astral.sh/uv/) for dependency management and
    uv run src/main.py
    ```
 
-   Cosine similarity scores between sentence pairs are printed to the console. Logs are written to `logs/app.log`, configurable via `config/log_config.json`.
+   Cosine similarity scores between the first sentence and every other sentence are printed to the console, along with the softmax distribution over those scores and its sum (which should equal 1). Logs are written to `logs/app.log`, configurable via `config/log_config.json`.
