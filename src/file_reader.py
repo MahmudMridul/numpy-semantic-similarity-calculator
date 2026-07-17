@@ -15,6 +15,9 @@ class FileReader:
         except FileNotFoundError as e:
             log.exception(e)
             return []
+        except UnicodeDecodeError as e:
+            log.exception(e)
+            return []
         except OSError as e:
             log.exception(e)
             return []
